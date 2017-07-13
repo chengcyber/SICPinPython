@@ -2,4 +2,4 @@
 https://cs61a.org/
 
 # Projects
-- [Hog] https://cs61a.org/proj/hog/
+- [Hog](https://cs61a.org/proj/hog/)
