@@ -7,14 +7,12 @@ test = {
         {
           'code': r"""
           >>> select_dice(True) == four_sided
-          bc6c4798917b91886d7fa5f56e42878f
-          # locked
+          True
           >>> select_dice(False) == four_sided
-          d763fd836a7bfb096222e985b161b406
-          # locked
+          False
           """,
           'hidden': False,
-          'locked': True
+          'locked': False
         },
         {
           'code': r"""

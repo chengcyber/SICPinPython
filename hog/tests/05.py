@@ -15,20 +15,18 @@ test = {
         {
           'code': r"""
           >>> is_swap(20, 40)
-          bc6c4798917b91886d7fa5f56e42878f
-          # locked
+          True
           """,
           'hidden': False,
-          'locked': True
+          'locked': False
         },
         {
           'code': r"""
           >>> is_swap(40, 20)
-          bc6c4798917b91886d7fa5f56e42878f
-          # locked
+          True
           """,
           'hidden': False,
-          'locked': True
+          'locked': False
         },
         {
           'code': r"""
