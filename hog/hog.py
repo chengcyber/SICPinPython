@@ -37,8 +37,7 @@ def free_bacon(opponent_score):
     """Return the points scored from rolling 0 dice (Free Bacon)."""
     # BEGIN PROBLEM 2
     digits = opponent_score % 10
-    from math import floor
-    tens = floor(opponent_score / 10) % 10
+    tens = opponent_score // 10
     return max(tens, digits) + 1
     # END PROBLEM 2
 
@@ -113,7 +112,7 @@ def is_swap(score0, score1):
     return False
     # END PROBLEM 5
 
-prime_arr = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97]
+prime_arr = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 127, 131, 137, 139]
 
 def is_prime(score):
     if score in prime_arr:
@@ -169,15 +168,16 @@ def play(strategy0, strategy1, score0=0, score1=0, goal=GOAL_SCORE):
 
         # Calculate turn score
         turn_score = take_turn(strategy(player_score, opponent_score), opponent_score, select_dice(dice_swapped))
-        if (is_prime(turn_score)):
+
+        # Hogtimus Prime
+        if is_prime(turn_score):
             turn_score = next_prime(turn_score)
+        # Perfect Piggy
+        if is_perfect_piggy(turn_score):
+            dice_swapped = not dice_swapped
 
         # eval score
         player_score += turn_score
-        # Perfect Piggy
-        if is_perfect_piggy(player_score):
-            dice_swapped = not dice_swapped
-
         if (player == 0):
             score0 = player_score
             score1 = opponent_score
@@ -191,6 +191,9 @@ def play(strategy0, strategy1, score0=0, score1=0, goal=GOAL_SCORE):
             score0 = score1
             score1 = temp
 
+        # print(player)
+        # print(score0)
+        # print(score1)
         # switch player
         player = other(player)
     # END PROBLEM 6
